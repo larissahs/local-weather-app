@@ -27,9 +27,7 @@ export class WeatherService {
   constructor(private httpClient: HttpClient) { }
 
   getCurrentWeather(city: string, country: string){
-    return this.httpClient.get<ICurrentWeatherData>(
-      `${environment.baseUrl}
-      pi.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${environment.appId}`).pipe(map(data => this.transformToICurrentWeather(data)))
+    return this.httpClient.get<ICurrentWeatherData>(`${environment.baseUrl}api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${environment.appId}`).pipe(map(data => this.transformToICurrentWeather(data)))
 
   }
 
@@ -40,7 +38,7 @@ export class WeatherService {
       date: data.dt * 1000,
       image: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
       temperature: data.main.temp,
-      description: data.weather[0].description 
+      description: data.weather[0].description
     }
   }
 }
