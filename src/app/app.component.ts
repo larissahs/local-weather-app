@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ICurrentWeather } from './icurrent-weather';
-import { WeatherService } from './weather/weather.service';
+import { WeatherService, IWeatherService } from './weather/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent {
 
   currentWeather: ICurrentWeather
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService:  WeatherService) {}
    
   doSearch(searchValue) {
     if (searchValue) { 
